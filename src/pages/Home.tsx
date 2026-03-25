@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Star, Sparkles, Heart, Gem } from "lucide-react";
+import { ParallaxImage } from "../components/ui/ScrollAnimation";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -63,13 +64,17 @@ const Home: React.FC = () => {
       {/* ═══ HERO ═══ */}
       <section className="relative flex min-h-screen items-center">
         <div className="absolute inset-0 z-0">
-          <img
+          <ParallaxImage
             src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1600&q=80"
             alt=""
-            className="h-full w-full object-cover"
+            speed={0.2}
+            className="absolute inset-0"
+            imgClassName="scale-[1.2]"
             loading="eager"
+            overlay={
+              <div className="absolute inset-0 bg-gradient-to-r from-creme/95 via-creme/70 to-transparent" />
+            }
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-creme/95 via-creme/70 to-transparent" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-12">
@@ -145,6 +150,10 @@ const Home: React.FC = () => {
                       alt={service.title}
                       className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                        e.currentTarget.parentElement!.style.backgroundColor = "#F5E6E8";
+                      }}
                     />
                   </div>
                   <div className="mb-3 flex items-center gap-3">

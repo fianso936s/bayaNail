@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ParallaxImage } from "../components/ui/ScrollAnimation";
 
 const categories = ["Tout", "French", "Milky", "Chrome", "Nail Art", "Natural"];
 
@@ -131,11 +132,12 @@ const Galerie: React.FC = () => {
                 transition={{ duration: 0.4 }}
                 className={`group relative overflow-hidden rounded-xl ${item.span}`}
               >
-                <img
+                <ParallaxImage
                   src={item.src}
                   alt={item.title}
-                  className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
+                  speed={0.15}
+                  className="aspect-square"
+                  imgClassName="scale-[1.15] transition-transform duration-700 group-hover:scale-[1.25]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">

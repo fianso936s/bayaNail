@@ -183,6 +183,10 @@ const Reservation: React.FC = () => {
                             alt={s.name}
                             className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             loading="lazy"
+                            onError={(e) => {
+                              e.currentTarget.style.display = "none";
+                              e.currentTarget.parentElement!.style.backgroundColor = "#F5E6E8";
+                            }}
                           />
                         </div>
                         <div className="bg-white p-4">

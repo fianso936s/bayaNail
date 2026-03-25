@@ -110,6 +110,10 @@ const Tarifs: React.FC = () => {
               alt="Signature pose"
               className="aspect-[4/3] w-full object-cover"
               loading="eager"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement!.style.backgroundColor = "#F5E6E8";
+              }}
             />
             <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-4 py-2 backdrop-blur-sm">
               <p className="font-display text-sm italic text-charcoal">

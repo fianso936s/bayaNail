@@ -1,5 +1,11 @@
-import React from "react";
-import { motion, type MotionProps, type Variants } from "framer-motion";
+import React, { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionProps,
+  type Variants,
+} from "framer-motion";
 
 interface ScrollAnimationProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, keyof MotionProps>,
@@ -99,5 +105,59 @@ export const StaggerItem: React.FC<{
     <motion.div variants={item} className={className}>
       {children}
     </motion.div>
+  );
+};
+
+/* ═══ PARALLAX IMAGE ═══ */
+
+interface ParallaxImageProps {
+  src: string;
+  alt?: string;
+  speed?: number;
+  className?: string;
+  imgClassName?: string;
+  overlay?: React.ReactNode;
+  loading?: "lazy" | "eager";
+}
+
+export const ParallaxImage: React.FC<ParallaxImageProps> = ({
+  src,
+  alt = "",
+  speed = 0.3,
+  className = "",
+  imgClassName = "",
+  overlay,
+  loading = "lazy",
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [`${-speed * 50}%`, `${speed * 50}%`],
+  );
+
+  return (
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <motion.img
+        src={src}
+        alt={alt}
+        style={{ y }}
+        className={`h-full w-full object-cover ${imgClassName}`}
+        loading={loading}
+        onError={(e) => {
+          const target = e.currentTarget;
+          target.style.display = "none";
+          if (target.parentElement) {
+            target.parentElement.style.backgroundColor = "#F5E6E8";
+          }
+        }}
+      />
+      {overlay}
+    </div>
   );
 };
