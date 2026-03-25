@@ -113,6 +113,8 @@ export const StaggerItem: React.FC<{
 interface ParallaxImageProps {
   src: string;
   alt?: string;
+  srcSet?: string;
+  sizes?: string;
   speed?: number;
   className?: string;
   imgClassName?: string;
@@ -123,6 +125,8 @@ interface ParallaxImageProps {
 export const ParallaxImage: React.FC<ParallaxImageProps> = ({
   src,
   alt = "",
+  srcSet,
+  sizes,
   speed = 0.3,
   className = "",
   imgClassName = "",
@@ -145,6 +149,8 @@ export const ParallaxImage: React.FC<ParallaxImageProps> = ({
     <div ref={ref} className={`overflow-hidden ${className}`}>
       <motion.img
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
         alt={alt}
         style={{ y }}
         className={`h-full w-full object-cover ${imgClassName}`}

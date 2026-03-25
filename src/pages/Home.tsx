@@ -66,7 +66,9 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <ParallaxImage
             src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1600&q=80"
-            alt=""
+            srcSet="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80 800w, https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1200&q=80 1200w, https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1600&q=80 1600w"
+            sizes="100vw"
+            alt="Salon de manucure bayaNail — Aubervilliers"
             speed={0.2}
             className="absolute inset-0"
             imgClassName="scale-[1.2]"
@@ -147,6 +149,8 @@ const Home: React.FC = () => {
                   <div className="mb-5 overflow-hidden rounded-lg">
                     <img
                       src={service.image}
+                      srcSet={`${service.image.replace('w=600', 'w=400')} 400w, ${service.image} 600w, ${service.image.replace('w=600', 'w=1200')} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       alt={service.title}
                       className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"

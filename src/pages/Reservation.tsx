@@ -180,6 +180,8 @@ const Reservation: React.FC = () => {
                         <div className="overflow-hidden">
                           <img
                             src={s.image}
+                            srcSet={`${s.image.replace('w=500', 'w=300')} 300w, ${s.image} 500w, ${s.image.replace('w=500', 'w=900')} 900w`}
+                            sizes="(max-width: 640px) 100vw, 50vw"
                             alt={s.name}
                             className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             loading="lazy"

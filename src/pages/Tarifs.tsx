@@ -107,7 +107,9 @@ const Tarifs: React.FC = () => {
           >
             <img
               src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80"
-              alt="Signature pose"
+              srcSet="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80 400w, https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80 700w, https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=80 1200w"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              alt="Pose signature bayaNail — vernis gel finition miroir"
               className="aspect-[4/3] w-full object-cover"
               loading="eager"
               onError={(e) => {

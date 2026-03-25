@@ -134,6 +134,8 @@ const Galerie: React.FC = () => {
               >
                 <ParallaxImage
                   src={item.src}
+                  srcSet={`${item.src.replace(/w=\d+/, 'w=400')} 400w, ${item.src.replace(/w=\d+/, 'w=800')} 800w, ${item.src.replace(/w=\d+/, 'w=1200')} 1200w`}
+                  sizes={item.span ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
                   alt={item.title}
                   speed={0.15}
                   className="aspect-square"
