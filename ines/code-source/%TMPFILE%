@@ -1,0 +1,12 @@
+NODE_ENV=production
+PORT=3001
+FRONTEND_URL=https://moniteur1d.com
+DATABASE_URL=mysql://USER:PASSWORD@localhost:3306/moniteur1d_db
+JWT_SECRET=change_me_access_token_secret
+JWT_REFRESH_SECRET=change_me_refresh_token_secret
+ADMIN_EMAIL=admin@moniteur1d.com
+ADMIN_PASSWORD=change_me_strong_password
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+RESEND_API_KEY=
+CRON_TOKEN=
